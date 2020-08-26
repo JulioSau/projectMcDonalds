@@ -13,5 +13,5 @@ export const ButtonTime = prop => {
 };
 
 ButtonTime.proptypes = {
-	time: PropTypes.string
+	time: PropTypes.date
 };
