@@ -1,44 +1,36 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			infoTable: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
+					logo: "https://logodownload.org/wp-content/uploads/2019/05/uber-eats-logo-1.png",
+					codigo: "AA-45BC",
+					marca: "Goiko",
+					sala: "4",
+					tiempo: "--:--",
+					status: "Cancelado"
 				},
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					logo:
+						"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJo9jl-3vjc3tzlnDeraFfPKxmbo-G6kk7Bg&usqp=CAU",
+					codigo: "AA-45BC",
+					marca: "Mc Donlds",
+					sala: "1",
+					tiempo: "00:00",
+					status: "Listo"
+				},
+				{
+					logo:
+						"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJo9jl-3vjc3tzlnDeraFfPKxmbo-G6kk7Bg&usqp=CAU",
+					codigo: "BB-33BC",
+					marca: "Goiko",
+					sala: "6",
+					tiempo: "01:00",
+					status: "Proceso"
 				}
 			]
 		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
+		actions: {}
 	};
 };
 
