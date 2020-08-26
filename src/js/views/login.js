@@ -18,13 +18,11 @@ export const Login = () => {
 				<form className="input-login ">
 					<div>
 						<label>Usuario</label>
-						<br />
 						<input type="text" />
 					</div>
 					<div>
 						<label>Contraseña</label>
-						<br />
-						<input type="text" />
+						<input type="password" />
 					</div>
 					<div className="btn-sesion">
 						<button>Iniciar sesion</button>
