@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import { Raiders } from "./views/viewRaiders";
-import { Login } from "./views/login";
+/* import { Raiders } from "./views/viewRaiders"; */
+/* import { Login } from "./views/login"; */
 import injectContext from "./store/appContext";
 
 //create your first component
@@ -16,12 +16,12 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Switch>
-						<Route exact path="/">
+						{/* <Route exact path="/">
 							<Raiders />
-						</Route>
-						<Route exact path="/login">
+						</Route> */}
+						{/* <Route exact path="/login">
 							<Login />
-						</Route>
+						</Route> */}
 						<Route exact path="/single/:theid" />
 						<Route>
 							<h1>Not found!</h1>
