@@ -1,0 +1,32 @@
+.navbar{
+    padding: 0.4rem;
+    background-color:#7CC68D;
+}
+.view-kitchen{ 
+    align-items: center;
+    background-color: #f7f7f9;
+}
+.box-orders{
+    width: 50rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding-top: 1rem;
+}
+.box-btn-kitchen{
+    margin-right: 3rem;
+
+}
+.btn-kitchen{    
+    margin: 0.2rem;
+    background-color: #5D8755;
+    border-radius: 0.3rem;
+    color: #FFFFFF;
+    padding: 0.5rem;
+    box-shadow: inset -5px -10px 13px -8px rgba(0,0,0,0.75); 
+}
+.icono-logo{
+    margin-left: 6rem;
+    width: 4rem;
+    height:4rem;
+}
