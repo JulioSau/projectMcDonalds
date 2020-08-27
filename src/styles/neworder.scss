@@ -1,4 +1,6 @@
-
+.main-color {
+    background-color: #d4ecd9;
+}
 .inputPedido {
     font-size: 3rem;
     border-radius: 1rem;
@@ -20,4 +22,10 @@ input:focus {
     background-color: white;
     width: 6rem;
 
+}
+
+@media only screen and (max-width: 600px) {
+  h3 {
+    font-size: 1.4rem;
+  }
 }
