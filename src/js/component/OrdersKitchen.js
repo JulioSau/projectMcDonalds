@@ -1,30 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../../styles/Orderskitchen.scss";
 
-export const OrdersKitchen = () => {
+export const OrdersKitchen = props => {
 	return (
-		<div className="container d-flex">
-			<div className="order-box">
-				<div>
+		<div className="order-box">
+			<h3>{props.codigo}</h3>
+			<div />
+			<div>
+				<div className="d-flex justify-content-center align-items-center">
 					<img
-						className="icono-logo"
+						className="icono-marca"
 						src="https://logodownload.org/wp-content/uploads/2019/05/uber-eats-logo-1.png"
 					/>
+					<span className="order-status">{props.status}</span>
 				</div>
-				<h4>AA-33DD</h4>
-				<div>
-					<strong>Procesando</strong>
-				</div>
-				<div>
-					<h6>12:00 </h6>
-				</div>
-			</div>
-			<div className="order-box">
-				<div>Logo</div>
-				<div>AA-33DD</div>
-				<div>Procesando</div>
-				<div>12:00 min</div>
+
+				<span className="order-time">{props.time}</span>
 			</div>
 		</div>
 	);
+};
+OrdersKitchen.propTypes = {
+	codigo: PropTypes.string,
+	status: PropTypes.string,
+	time: PropTypes.string
 };

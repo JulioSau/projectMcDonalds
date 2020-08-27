@@ -10,7 +10,6 @@ import "../styles/index.scss";
 
 //import your own components
 import Layout from "./layout";
-import { OrdersKitchen } from "./component/OrdersKitchen";
 
 //render your react application
-ReactDOM.render(<OrdersKitchen />, document.querySelector("#app"));
+ReactDOM.render(<Layout />, document.querySelector("#app"));

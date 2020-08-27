@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 /* import { Raiders } from "./views/viewRaiders";
 import { Login } from "./views/login"; */
 import { OrdersKitchen } from "./component/OrdersKitchen";
+import { ViewKitchen } from "./views/viewKitchen";
 import injectContext from "./store/appContext";
 
 //create your first component
@@ -23,8 +24,8 @@ const Layout = () => {
 						<Route exact path="/login">
 							<Login />
 						</Route> */}
-						<Route exact path="/login/cocinero">
-							<OrdersKitchen />
+						<Route exact path="/">
+							<ViewKitchen />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

@@ -1,9 +1,11 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import { OrdersKitchen } from "../component/OrdersKitchen";
 import "../../styles/viewsKitchen.scss";
 
 export const ViewKitchen = () => {
+	const { actions, store } = useContext(Context);
+
 	return (
 		<div className="view-kitchen">
 			<nav className="navbar">
@@ -17,16 +19,11 @@ export const ViewKitchen = () => {
 				</div>
 			</nav>
 			<div className="box-orders">
-				<OrdersKitchen />
-				<OrdersKitchen />
-				<OrdersKitchen />
-				<OrdersKitchen />
-				<OrdersKitchen />
-				<OrdersKitchen />
-				<OrdersKitchen />
-				<OrdersKitchen />
-				<OrdersKitchen />
-				<OrdersKitchen />
+				{store.infoTable.map((orders, index) => {
+					return (
+						<OrdersKitchen key={index} codigo={orders.codigo} status={orders.status} time={orders.tiempo} />
+					);
+				})}
 			</div>
 		</div>
 	);
