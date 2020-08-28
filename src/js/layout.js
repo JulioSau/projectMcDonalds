@@ -18,15 +18,6 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Switch>
-<<<<<<< HEAD
-						{/* <Route exact path="/">
-							<Raiders />
-						</Route> */}
-						{/* <Route exact path="/login">
-							<Login />
-						</Route> */}
-						<Route exact path="/single/:theid" />
-=======
 						{/*                     <Route exact path="/">
 							<Raiders />
 						</Route> */}
@@ -36,7 +27,6 @@ const Layout = () => {
 						<Route exact path="/">
 							<ViewKitchen />
 						</Route>
->>>>>>> feature/richard/view-cocinero
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
