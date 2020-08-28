@@ -1,5 +1,5 @@
 import React from "react";
-/* import { ButtonTime } from "../component/buttontime"; */
+import { ButtonTime } from "../component/buttontime";
 import { Submit } from "../component/submit";
 import "../../styles/neworder.scss";
 import "../../styles/index.scss";
@@ -19,10 +19,10 @@ export const NewOrder = () => (
 					<span className="total-minutes second-typography rounded">--------</span>
 				</div>
 				<div className="d-flex justify-content-center">
-					{/* <ButtonTime time="5 min" />
+					<ButtonTime time="5 min" />
 					<ButtonTime time="10 min" />
 					<ButtonTime time="20 min" />
-					<ButtonTime time="30 min" /> */}
+					<ButtonTime time="30 min" />
 				</div>
 				<div className="pb-4">
 					<Submit />
