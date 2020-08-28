@@ -1,11 +1,14 @@
 body {
+    /* background-image: url(https://images.pexels.com/photos/2878745/pexels-photo-2878745.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) */
     background: linear-gradient(90deg, rgba(241,247,235,1) 17%, rgba(214,245,204,1) 48%, rgba(200,240,228,1) 80%);
 }
-input:focus {
-    color: rgb(115, 206, 120);
 
+.input {
+    height: 3rem;
 }
 
-input {
-    height: 10rem; 
+.submit {
+    width:40%;
+    height: 3rem;
+    font-size: 1rem;
 }
