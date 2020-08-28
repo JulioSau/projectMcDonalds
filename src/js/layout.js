@@ -1,8 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+<<<<<<< HEAD
 /* import { Raiders } from "./views/viewRaiders"; */
 /* import { Login } from "./views/login"; */
+=======
+/* import { Raiders } from "./views/viewRaiders";
+import { Login } from "./views/login"; */
+import { TableInfo } from "./component/tableInfo";
+import { ViewKitchen } from "./views/viewKitchen";
+>>>>>>> feature/richard/view-cocinero
 import injectContext from "./store/appContext";
 
 //create your first component
@@ -16,6 +23,7 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Switch>
+<<<<<<< HEAD
 						{/* <Route exact path="/">
 							<Raiders />
 						</Route> */}
@@ -23,6 +31,17 @@ const Layout = () => {
 							<Login />
 						</Route> */}
 						<Route exact path="/single/:theid" />
+=======
+						{/*                     <Route exact path="/">
+							<Raiders />
+						</Route> */}
+						<Route exact path="/tableInfo">
+							<TableInfo />
+						</Route>
+						<Route exact path="/">
+							<ViewKitchen />
+						</Route>
+>>>>>>> feature/richard/view-cocinero
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
