@@ -7,9 +7,12 @@ import "bootstrap/dist/css/bootstrap.css";
 
 //include your index.scss file into the bundle
 import "../styles/index.scss";
+import "./views/neworder";
 
 //import your own components
 import Layout from "./layout";
+import { NewOrder } from "./views/neworder";
+import { NewCooker } from "../js/views/newcooker";
 
 //render your react application
-ReactDOM.render(<Layout />, document.querySelector("#app"));
+ReactDOM.render(<NewCooker />, document.querySelector("#app"));

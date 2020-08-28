@@ -1,0 +1,33 @@
+.main-color {
+    background: linear-gradient(90deg, rgba(241,247,235,1) 17%, rgba(214,245,204,1) 48%, rgba(200,240,228,1) 80%);
+
+
+}
+.inputPedido {
+    font-size: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 0px solid;
+}
+input:focus {
+    outline: none;
+}
+
+.logo-medium {
+    width: 4rem;
+    height: 4rem;
+}
+
+.total-minutes {
+    font-size: 1rem;
+    border-style: groove;
+    background-color: white;
+    width: 6rem;
+
+}
+
+@media only screen and (max-width: 600px) {
+  h3 {
+    font-size: 1.4rem;
+  }
+}
