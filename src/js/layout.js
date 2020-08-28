@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 /* import { Raiders } from "./views/viewRaiders";
 import { Login } from "./views/login"; */
-import { OrdersKitchen } from "./component/OrdersKitchen";
+import { TableInfo } from "./component/tableInfo";
 import { ViewKitchen } from "./views/viewKitchen";
 import injectContext from "./store/appContext";
 
@@ -18,12 +18,12 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Switch>
-						{/* 						<Route exact path="/">
+						{/*                     <Route exact path="/">
 							<Raiders />
-						</Route>
-						<Route exact path="/login">
-							<Login />
 						</Route> */}
+						<Route exact path="/tableInfo">
+							<TableInfo />
+						</Route>
 						<Route exact path="/">
 							<ViewKitchen />
 						</Route>

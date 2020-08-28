@@ -1,17 +1,20 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { OrdersKitchen } from "../component/OrdersKitchen";
+import { Link } from "react-router-dom";
 import "../../styles/viewsKitchen.scss";
 
 export const ViewKitchen = () => {
 	const { actions, store } = useContext(Context);
 
 	return (
-		<div className="view-kitchen">
+		<div>
 			<div className="navbar">
 				<span className="text-muetd logo-name">D-Kitchen</span>
 				<div className="ml-auto box-btn-kitchen">
-					<button className="btn-kitchen">Añadir pedido</button>
+					<Link to="/tableInfo">
+						<button className="btn-kitchen">Añadir pedido</button>
+					</Link>
 					<button className="btn-kitchen">Cerrar sesion</button>
 				</div>
 			</div>
