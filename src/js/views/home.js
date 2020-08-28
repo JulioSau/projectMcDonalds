@@ -1,9 +1,10 @@
 import React from "react";
+import { Login } from "./login";
 import "../../styles/home.scss";
-import { TableInfo } from "../component/tableInfo";
+
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		<TableInfo />
+	<div className="">
+		<Login />
 	</div>
 );
