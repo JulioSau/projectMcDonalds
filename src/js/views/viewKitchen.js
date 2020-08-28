@@ -8,22 +8,31 @@ export const ViewKitchen = () => {
 
 	return (
 		<div className="view-kitchen">
-			<nav className="navbar">
-				<img
-					className="icono-logo"
-					src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png"
-				/>
+			<div className="navbar">
+				<span className="text-muetd logo-name">D-Kitchen</span>
 				<div className="ml-auto box-btn-kitchen">
 					<button className="btn-kitchen">Añadir pedido</button>
 					<button className="btn-kitchen">Cerrar sesion</button>
 				</div>
-			</nav>
+			</div>
 			<div className="box-orders">
 				{store.infoTable.map((orders, index) => {
 					return (
-						<OrdersKitchen key={index} codigo={orders.codigo} status={orders.status} time={orders.tiempo} />
+						<OrdersKitchen
+							key={index}
+							marca={orders.logo}
+							codigo={orders.codigo}
+							status={orders.status}
+							time={orders.tiempo}
+						/>
 					);
 				})}
+			</div>
+			<div className="footer-kitchen d-flex justify-content-center">
+				<img
+					className="icono-logo"
+					src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png"
+				/>
 			</div>
 		</div>
 	);

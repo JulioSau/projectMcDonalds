@@ -1,21 +1,28 @@
 .navbar{
-    padding: 0.4rem;
-    background-color:#7CC68D;
+    width: 100%;
+    border-bottom:#7CC68D solid 5px;
+    background-color: #f9f9fb;
+    position: fixed;
+    z-index: 100;
 }
-.view-kitchen{ 
-    align-items: center;
-    background-color: #f7f7f9;
+.footer-kitchen{
+    border-top:#7CC68D solid 5px;
+    background: #070707;
 }
 .box-orders{
-    width: 50rem;
+    width: 55rem;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    padding-top: 1rem;
+    padding: 5rem 0rem 0rem 3rem;
+    border-right: #7CC68D 1px solid;
+    border-left: #7CC68D 1px solid;
+    -webkit-box-shadow: -2px 6px 30px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 6px 30px -1px rgba(0,0,0,0.75);
+    box-shadow: -2px 6px 30px -1px rgba(0,0,0,0.75);
 }
 .box-btn-kitchen{
     margin-right: 3rem;
-
 }
 .btn-kitchen{    
     margin: 0.2rem;
@@ -26,7 +33,7 @@
     box-shadow: inset -5px -10px 13px -8px rgba(0,0,0,0.75); 
 }
 .icono-logo{
-    margin-left: 6rem;
-    width: 4rem;
-    height:4rem;
+    width: 6rem;
+    height:6rem;
+    padding: 1rem;
 }
