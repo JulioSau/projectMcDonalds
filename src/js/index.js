@@ -12,6 +12,7 @@ import "./views/neworder";
 //import your own components
 import Layout from "./layout";
 import { NewOrder } from "./views/neworder";
+import { NewCooker } from "../js/views/newcooker";
 
 //render your react application
-ReactDOM.render(<NewOrder />, document.querySelector("#app"));
+ReactDOM.render(<NewCooker />, document.querySelector("#app"));
