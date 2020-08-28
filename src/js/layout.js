@@ -1,15 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-<<<<<<< HEAD
-/* import { Raiders } from "./views/viewRaiders"; */
-/* import { Login } from "./views/login"; */
-=======
 /* import { Raiders } from "./views/viewRaiders";
 import { Login } from "./views/login"; */
 import { TableInfo } from "./component/tableInfo";
 import { ViewKitchen } from "./views/viewKitchen";
->>>>>>> feature/richard/view-cocinero
 import injectContext from "./store/appContext";
 
 //create your first component
