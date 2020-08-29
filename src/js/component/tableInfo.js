@@ -1,11 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import "../../styles/tableInfo.scss";
 
 export const TableInfo = () => {
 	const { actions, store } = useContext(Context);
 	return (
 		<table className="table">
+			<div className="btn-sesion">
+				<Link to="/">
+					<button>Iniciar sesion</button>
+				</Link>
+			</div>
 			<thead>
 				<tr>
 					<th scope="col">Logo</th>

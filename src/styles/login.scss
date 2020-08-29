@@ -1,7 +1,6 @@
 .login-box{
     width: 20rem;
     height: 25rem;
-    background-color: #D4ECD9;
     border-radius: 0.5rem;
     margin: auto;
     margin-top:2rem ;
@@ -14,9 +13,9 @@
     height: 4rem;
     display: block;
 }
-.input-login {
-    width: 15rem;
-    border-radius: 0.5rem;
+.input-box {
+    height: 3rem;
+    border-left: 40px solid rgb(69, 116, 80);
     margin: auto;
     padding-left: 1rem;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { ButtonTime } from "../component/buttontime";
 import { Submit } from "../component/submit";
 import "../../styles/neworder.scss";
-import "../../styles/index.scss";
+import { Link } from "react-router-dom";
 
 export const NewOrder = () => (
 	<div className="container-fluid d-flex justify-content-center">
@@ -24,9 +24,11 @@ export const NewOrder = () => (
 					<ButtonTime time="20 min" />
 					<ButtonTime time="30 min" />
 				</div>
-				<div className="pb-4">
-					<Submit />
-				</div>
+				<Link to="/kictchen">
+					<div className="pb-4">
+						<Submit />
+					</div>
+				</Link>
 			</form>
 		</div>
 	</div>

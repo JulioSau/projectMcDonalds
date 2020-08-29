@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/newcooker.scss";
+import { Link } from "react-router-dom";
 
 export const NewCooker = () => {
 	return (
@@ -9,44 +10,38 @@ export const NewCooker = () => {
 				<form>
 					<div className="form-group">
 						<label>Nombre de usuario:</label>
-						<input
-							type="user"
-							className="input form-control rounded-pill"
-							id="user"
-							placeholder="Escribe tu usuario"
-						/>
+						<input type="user" className="input form-control" id="user" placeholder="Escribe tu usuario" />
 					</div>
 					<div className="form-group">
 						<label>Nombre y apellidos:</label>
 						<input
 							type="name"
-							className="input form-control rounded-pill"
+							className="input form-control"
 							id="name"
 							placeholder="Escribe tu nombre y apellidos"
 						/>
 					</div>
 					<div className="form-group">
 						<label>Email address:</label>
-						<input
-							type="email"
-							className=" input form-control rounded-pill"
-							id="email"
-							placeholder="Escribe tu email"
-						/>
+						<input type="email" className=" input form-control" id="email" placeholder="Escribe tu email" />
 					</div>
 					<div className="form-group">
 						<label>Password:</label>
 						<input
 							type="password"
-							className="input form-control rounded-pill"
+							className="input form-control"
 							id="pwd"
 							placeholder="Escribe tu contraseña"
 						/>
 					</div>
 					<div className="text-center pt-4 pb-4">
-						<button type="submit" className="submit btn btn-default bg-success rounded-pill text-white ">
-							Crear nuevo usuario
-						</button>
+						<Link to="/kictchen">
+							<button
+								type="submit"
+								className="submit btn btn-default bg-success rounded-pill text-white ">
+								Crear nuevo usuario
+							</button>
+						</Link>
 					</div>
 				</form>
 			</div>

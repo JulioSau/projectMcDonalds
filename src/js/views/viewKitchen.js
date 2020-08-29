@@ -12,10 +12,12 @@ export const ViewKitchen = () => {
 			<div className="navbar">
 				<span className="text-muetd logo-name">D-Kitchen</span>
 				<div className="ml-auto box-btn-kitchen">
-					<Link to="/tableInfo">
+					<Link to="/order">
 						<button className="btn-kitchen">Añadir pedido</button>
 					</Link>
-					<button className="btn-kitchen">Cerrar sesion</button>
+					<Link to="/">
+						<button className="btn-kitchen">Cerrar sesion</button>{" "}
+					</Link>
 				</div>
 			</div>
 			<div className="box-orders">

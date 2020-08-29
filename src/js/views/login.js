@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/login.scss";
 
 export const Login = () => {
 	return (
 		<div className="container">
-			<Link to="/login" />
 			<div className="login-box">
 				<div className="logo-box">
 					<img
@@ -16,16 +14,23 @@ export const Login = () => {
 				</div>
 
 				<form className="input-login ">
-					<div>
-						<label>Usuario</label>
-						<input type="text" />
+					<div className="form-group">
+						<label>Email address:</label>
+						<input type="email" className=" input form-control" id="email" placeholder="Escribe tu email" />
 					</div>
-					<div>
-						<label>Contraseña</label>
-						<input type="password" />
+					<div className="form-group">
+						<label>Password:</label>
+						<input
+							type="password"
+							className="input form-control"
+							id="pwd"
+							placeholder="Escribe tu contraseña"
+						/>
 					</div>
 					<div className="btn-sesion">
-						<button>Iniciar sesion</button>
+						<Link to="/cooker">
+							<button>Iniciar sesion</button>
+						</Link>
 					</div>
 				</form>
 			</div>
