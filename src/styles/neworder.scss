@@ -1,29 +1,30 @@
-.main-color {
+/* .main-color {
     background: linear-gradient(90deg, rgba(241,247,235,1) 17%, rgba(214,245,204,1) 48%, rgba(200,240,228,1) 80%);
-
-
+} */
+.order-form{
+    margin-bottom: 2rem;
+    background-color: #f9f9fb;
+    
+    margin-top: 2rem;
 }
-.inputPedido {
+.header-order-form{
+    display: block;
+    margin: auto;;
+}
+.order-input{
+    width: 20rem;
     font-size: 3rem;
     border-radius: 1rem;
     text-align: center;
-    border: 0px solid;
-}
-input:focus {
-    outline: none;
 }
 
-.logo-medium {
-    width: 4rem;
-    height: 4rem;
-}
-
-.total-minutes {
-    font-size: 1rem;
-    border-style: groove;
+.order-minutes {
+    width: 8rem;
     background-color: white;
-    width: 6rem;
-
+    border: 1px solid black;
+    align-items: center;
+     border-radius: 1rem;
+    font-size: 2rem;
 }
 
 @media only screen and (max-width: 600px) {

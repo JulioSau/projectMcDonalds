@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import injectContext from "./store/appContext";
 import { Login } from "./views/login";
 import { TableInfo } from "./component/tableInfo";
 import { ViewKitchen } from "./views/viewKitchen";
 import { NewCooker } from "./views/newcooker";
 import { NewOrder } from "./views/neworder";
+import { Footer } from "./component/footer";
+import injectContext from "./store/appContext";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +40,7 @@ const Layout = () => {
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
+					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>

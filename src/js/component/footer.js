@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import "../../styles/footer.css";
+import React from "react";
+import "../../styles/footer.scss";
+import "../../styles/global.scss";
 
 export const Footer = () => (
-	<div className="footer mt-auto d-flex align-items-center">
-		<span className="offset-10 text-white">© D-Kitchen</span>
+	<div className="footer d-flex justify-content-center">
+		<img className="logo-medium" src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png" />
 	</div>
 );

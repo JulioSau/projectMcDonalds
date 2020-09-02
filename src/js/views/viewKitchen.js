@@ -3,41 +3,35 @@ import { Context } from "../store/appContext";
 import { OrdersKitchen } from "../component/OrdersKitchen";
 import { Link } from "react-router-dom";
 import "../../styles/viewsKitchen.scss";
+import "../../styles/global.scss";
 
 export const ViewKitchen = () => {
 	const { actions, store } = useContext(Context);
+	console.log(store.tiempo);
 
 	return (
-		<div>
-			<div className="navbar">
-				<span className="text-muetd logo-name">D-Kitchen</span>
-				<div className="ml-auto box-btn-kitchen">
-					<Link to="/order">
-						<button className="btn-kitchen">Añadir pedido</button>
-					</Link>
-					<Link to="/">
-						<button className="btn-kitchen">Cerrar sesion</button>{" "}
-					</Link>
-				</div>
+		<div className="d-flex pt-4">
+			<div className="col-3 btn-kitchen-box">
+				<span className="text-muetd title">D-Kitchen</span>
+				<Link to="/order">
+					<button className="mt-5 btn-kitchen-command">Añadir pedido</button>
+				</Link>
+				<Link to="/">
+					<button className="btn-kitchen-login">Cerrar sesion</button>
+				</Link>
 			</div>
-			<div className="box-orders">
+			<div className="box-orders col-9">
 				{store.infoTable.map((orders, index) => {
 					return (
 						<OrdersKitchen
 							key={index}
 							marca={orders.logo}
-							codigo={orders.codigo}
+							codigo={store.codigo}
 							status={orders.status}
 							time={orders.tiempo}
 						/>
 					);
 				})}
-			</div>
-			<div className="footer-kitchen d-flex justify-content-center">
-				<img
-					className="icono-logo"
-					src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png"
-				/>
 			</div>
 		</div>
 	);

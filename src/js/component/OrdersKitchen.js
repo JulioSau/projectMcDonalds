@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Component } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "../../styles/Orderskitchen.scss";
+import "../../styles/global.scss";
 
 export const OrdersKitchen = props => {
 	const [show, setShow] = useState(false);
@@ -25,12 +27,15 @@ export const OrdersKitchen = props => {
 	return (
 		<div>
 			<div onClick={handleShow} className="order-box">
+				<div className="order-status">
+					<span className={orderStatus}>{props.status}</span>
+				</div>
 				<div className="d-flex justify-content-center align-items-center">
-					<img className="icono-marca" src={props.marca} />
-					<h3 className="mr-3">{props.codigo}</h3>
+					<img className="order-brand" src={props.marca} />
+					<span className="mr-3 title-sub">{props.codigo}</span>
 				</div>
 				<div />
-				<span className={orderStatus}>{props.status}</span>
+
 				<div>
 					<span className="order-time">{props.time}</span>
 				</div>
@@ -46,21 +51,25 @@ export const OrdersKitchen = props => {
 				<Modal.Body>
 					<div className="d-flex">
 						<div className="order-box">
+							<span className={orderStatus}>{props.status}</span>
 							<div className="d-flex justify-content-center align-items-center">
-								<img className="icono-marca" src={props.marca} />
-								<h3>{props.codigo}</h3>
+								<img className="order-brand" src={props.marca} />
+								<h3 className="title-sub">{props.codigo}</h3>
 							</div>
 							<div />
-							<span className={orderStatus}>{props.status}</span>
+
 							<div>
 								<span className="order-time">{props.time}</span>
 							</div>
 						</div>
 						<div className="m-auto">
 							<span>
-								<i className="fa fa-pencil btn-Modify-order" aria-hidden="true" />
+								<Link to="/order">
+									<i className="fa fa-pencil btn-Modify-order" aria-hidden="true" />
+								</Link>
 								Editar pedido
 							</span>
+
 							<span>
 								<i className="fa fa-check text-success btn-Modify-order" aria-hidden="true" />
 								Pedido listo
