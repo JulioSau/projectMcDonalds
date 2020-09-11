@@ -29,10 +29,12 @@ const Layout = () => {
 						<Route exact path="/Info">
 							<TableInfo />
 						</Route>
-						<Route exact path="/kictchen">
+						<Route exact path="/kitchen">
 							<ViewKitchen />
 						</Route>
-
+						<Route exact path="/repartidor">
+							<TableInfo />
+						</Route>
 						<Route exact path="/order">
 							<NewOrder />
 						</Route>

@@ -23,16 +23,16 @@ export const TableInfo = () => {
 				</tr>
 			</thead>
 			<tbody>
-				{store.infoTable.map((infoRow, index) => {
+				{store.orders.map((infoRow, index) => {
 					return (
 						<tr key={index}>
 							<th scope="row">
 								<img className="icono-logo" src={infoRow.logo} />
 							</th>
-							<th>{infoRow.codigo}</th>
-							<th>{infoRow.marca}</th>
-							<th>{infoRow.sala}</th>
-							<th>{infoRow.tiempo}</th>
+							<th>{infoRow.called_code}</th>
+							<th>{infoRow.logo}</th>
+							<th>{infoRow.brand}</th>
+							<th>{infoRow.time}</th>
 							<th>{infoRow.status}</th>
 						</tr>
 					);

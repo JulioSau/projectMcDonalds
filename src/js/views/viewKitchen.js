@@ -16,19 +16,22 @@ export const ViewKitchen = () => {
 				<Link to="/order">
 					<button className="mt-5 btn-kitchen-command">Añadir pedido</button>
 				</Link>
+				<Link to="/repartidor">
+					<button className="mt-5 btn-kitchen-command">Vista repartidor</button>
+				</Link>
 				<Link to="/">
 					<button className="btn-kitchen-login">Cerrar sesion</button>
 				</Link>
 			</div>
 			<div className="box-orders col-9">
-				{store.infoTable.map((orders, index) => {
+				{store.orders.map((newOrders, index) => {
 					return (
 						<OrdersKitchen
 							key={index}
-							marca={orders.logo}
-							codigo={store.codigo}
-							status={orders.status}
-							time={orders.tiempo}
+							marca={newOrders.brand}
+							codigo={newOrders.called_code}
+							status={newOrders.status}
+							time={newOrders.time}
 						/>
 					);
 				})}

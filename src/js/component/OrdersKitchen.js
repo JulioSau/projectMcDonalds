@@ -16,30 +16,30 @@ export const OrdersKitchen = props => {
 	let statusCancel = "text-danger";
 	let statusPending = "text-warning";
 
-	if (props.status == "Listo") {
+	if (props.status == "listo") {
 		orderStatus = orderStatus.concat(statusDone);
-	} else if (props.status == "Proceso") {
+	} else if (props.status == "espera") {
 		orderStatus = orderStatus.concat(statusPending);
-	} else if (props.status == "Cancelado") {
+	} else if (props.status == "cancelado") {
 		orderStatus = orderStatus.concat(statusCancel);
 	}
 
 	return (
 		<div>
-			<div onClick={handleShow} className="order-box">
+			<button onClick={handleShow} className="order-box">
 				<div className="order-status">
 					<span className={orderStatus}>{props.status}</span>
 				</div>
+
 				<div className="d-flex justify-content-center align-items-center">
-					<img className="order-brand" src={props.marca} />
+					<img className="order-brand" src={props.logo} />
 					<span className="mr-3 title-sub">{props.codigo}</span>
 				</div>
-				<div />
 
 				<div>
 					<span className="order-time">{props.time}</span>
 				</div>
-			</div>
+			</button>
 
 			<Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
 				<Modal.Header closeButton>
@@ -53,7 +53,7 @@ export const OrdersKitchen = props => {
 						<div className="order-box">
 							<span className={orderStatus}>{props.status}</span>
 							<div className="d-flex justify-content-center align-items-center">
-								<img className="order-brand" src={props.marca} />
+								<img className="order-brand" src={props.logo} />
 								<h3 className="title-sub">{props.codigo}</h3>
 							</div>
 							<div />
@@ -93,8 +93,8 @@ export const OrdersKitchen = props => {
 	);
 };
 OrdersKitchen.propTypes = {
-	codigo: PropTypes.string,
+	logo: PropTypes.string,
 	status: PropTypes.string,
-	time: PropTypes.string,
-	marca: PropTypes.string
+	time: PropTypes.number,
+	codigo: PropTypes.string
 };

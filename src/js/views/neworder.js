@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { ButtonTime } from "../component/buttontime";
 import { Submit } from "../component/submit";
@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 export const NewOrder = () => {
 	const { actions, store } = useContext(Context);
+
+	const [inputCode, setCodigo] = useState("");
 
 	return (
 		<div className="m-auto col-10">
@@ -19,27 +21,54 @@ export const NewOrder = () => {
 				<span className="header-order-form title-sub pb-2 pt-2">Código de pedido</span>
 
 				<form id="my-form">
-					<input
-						onChange={e => {
-							actions.getCodigo(e);
-						}}
-						className="order-input  mb-3"
-					/>
+					<input onChange={e => setCodigo(e.target.value)} className="order-input  mb-3" />
 
 					<div className="d-flex justify-content-center mb-3">
 						<span className=" title-sub pb-2 mr-4">Tiempo de preparación</span>
-						<span className="order-minutes ">{store.tiempo}</span>
+						<span className="order-minutes ">{store.timeTotal}</span>
 					</div>
 					<div className="d-flex justify-content-center">
-						<ButtonTime time="5" />
-						<ButtonTime time="10 " />
-						<ButtonTime time="20" />
-						<ButtonTime time="30 " />
+						<img
+							onClick={() => {
+								actions.orderLogo(store.orders_logo.ubereats);
+							}}
+							className="logo-medium"
+							src="https://logodownload.org/wp-content/uploads/2019/05/uber-eats-logo-1.png"
+						/>
+
+						<button>
+							<img
+								className="logo-medium"
+								src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJo9jl-3vjc3tzlnDeraFfPKxmbo-G6kk7Bg&usqp=CAU"
+							/>
+						</button>
+						<button>
+							<img
+								className="logo-medium"
+								src="https://static.comunicae.com/photos/notas/1205727/1561022224_JustEatLogo.png"
+							/>
+						</button>
+						<button>
+							<img
+								className="logo-medium"
+								src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png"
+							/>
+						</button>
 					</div>
-					<Link to="/kictchen">
-						<div className="pb-4">
-							<Submit />
-						</div>
+					<div className="d-flex justify-content-center">
+						<ButtonTime time="60" />
+						<ButtonTime time="30" />
+						<ButtonTime time="10" />
+						<ButtonTime time="Restar" />
+					</div>
+					<Link to="/kitchen">
+						<button
+							onClick={e => {
+								actions.addOrder(inputCode, store.time);
+							}}
+							className=" bg-secondary submit col-md-5 mt-5 rounded">
+							ACEPTAR
+						</button>
 					</Link>
 				</form>
 			</div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import getState from "./flux.js";
+import { OrdersKitchen } from "../component/OrdersKitchen.js";
 
 export const Context = React.createContext(null);
 const injectContext = PassedComponent => {
@@ -16,7 +17,9 @@ const injectContext = PassedComponent => {
 			})
 		);
 
-		useEffect(() => {}, []);
+		useEffect(() => {
+			state.actions.getOrders();
+		}, []);
 
 		return (
 			<Context.Provider value={state}>
