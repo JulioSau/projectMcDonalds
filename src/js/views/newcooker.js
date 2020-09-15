@@ -96,6 +96,21 @@ export const NewCooker = () => {
 							type="submit">
 							Crear usuario
 						</Button>
+						<Button
+							onClick={e => {
+								actions.addAdmin(
+									inputNickname,
+									inputEnterpraise,
+									inputName,
+									inputLastname,
+									inputEmail,
+									inputPassword
+								);
+							}}
+							variant="secondary"
+							type="submit">
+							Crear Admin
+						</Button>
 					</Link>
 				</div>
 			</form>

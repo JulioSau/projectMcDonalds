@@ -5,6 +5,7 @@ import "../../styles/tableInfo.scss";
 
 export const TableInfo = () => {
 	const { actions, store } = useContext(Context);
+
 	return (
 		<table className="table">
 			<div className="btn-sesion">
@@ -27,11 +28,11 @@ export const TableInfo = () => {
 					return (
 						<tr key={index}>
 							<th scope="row">
-								<img className="icono-logo" src={infoRow.logo} />
+								<img className="icono-logo" src={infoRow.brand} />
 							</th>
 							<th>{infoRow.called_code}</th>
 							<th>{infoRow.logo}</th>
-							<th>{infoRow.brand}</th>
+							<th>{infoRow.logo}</th>
 							<th>{infoRow.time}</th>
 							<th>{infoRow.status}</th>
 						</tr>

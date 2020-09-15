@@ -25,7 +25,7 @@ export const NewOrder = () => {
 
 					<div className="d-flex justify-content-center mb-3">
 						<span className=" title-sub pb-2 mr-4">Tiempo de preparación</span>
-						<span className="order-minutes ">{store.timeTotal}</span>
+						<span className="order-minutes ">{store.orderTime}</span>
 					</div>
 					<div className="d-flex justify-content-center">
 						<img
@@ -36,35 +36,40 @@ export const NewOrder = () => {
 							src="https://logodownload.org/wp-content/uploads/2019/05/uber-eats-logo-1.png"
 						/>
 
-						<button>
-							<img
-								className="logo-medium"
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJo9jl-3vjc3tzlnDeraFfPKxmbo-G6kk7Bg&usqp=CAU"
-							/>
-						</button>
-						<button>
-							<img
-								className="logo-medium"
-								src="https://static.comunicae.com/photos/notas/1205727/1561022224_JustEatLogo.png"
-							/>
-						</button>
-						<button>
-							<img
-								className="logo-medium"
-								src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png"
-							/>
-						</button>
+						<img
+							onClick={() => {
+								actions.orderLogo(store.orders_logo.glovo);
+							}}
+							className="logo-medium"
+							src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJo9jl-3vjc3tzlnDeraFfPKxmbo-G6kk7Bg&usqp=CAU"
+						/>
+
+						<img
+							onClick={() => {
+								actions.orderLogo(store.orders_logo.justeat);
+							}}
+							className="logo-medium"
+							src="https://static.comunicae.com/photos/notas/1205727/1561022224_JustEatLogo.png"
+						/>
+
+						<img
+							onClick={() => {
+								actions.orderLogo(store.orders_logo.d_kitchen);
+							}}
+							className="logo-medium"
+							src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png"
+						/>
 					</div>
 					<div className="d-flex justify-content-center">
 						<ButtonTime time="60" />
 						<ButtonTime time="30" />
 						<ButtonTime time="10" />
-						<ButtonTime time="Restar" />
+						<ButtonTime time="Reset" />
 					</div>
 					<Link to="/kitchen">
 						<button
 							onClick={e => {
-								actions.addOrder(inputCode, store.time);
+								actions.addOrder(inputCode, store.orderTime);
 							}}
 							className=" bg-secondary submit col-md-5 mt-5 rounded">
 							ACEPTAR

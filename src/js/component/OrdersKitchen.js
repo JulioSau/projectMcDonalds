@@ -72,11 +72,11 @@ export const OrdersKitchen = props => {
 
 							<span>
 								<i className="fa fa-check text-success btn-Modify-order" aria-hidden="true" />
-								Pedido listo
+								Entregado
 							</span>
 							<span>
 								<i className="fa fa-times text-danger btn-Modify-order" aria-hidden="true" />
-								Borrar pedido
+								Editar Tiempo
 							</span>
 						</div>
 					</div>
