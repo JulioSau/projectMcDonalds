@@ -20,9 +20,6 @@ export const ViewKitchen = () => {
 				<Link to="/order">
 					<button className="mt-5 btn-kitchen-command">Añadir pedido</button>
 				</Link>
-				<Link to="/repartidor">
-					<button className="mt-5 btn-kitchen-command">Vista repartidor</button>
-				</Link>
 				<Link to="/">
 					<button className="btn-kitchen-login">Cerrar sesion</button>
 				</Link>

@@ -5,7 +5,7 @@ import "../../styles/newcooker.scss";
 import "../../styles/global.scss";
 import { Link } from "react-router-dom";
 
-export const NewCooker = () => {
+export const NewAdmin = () => {
 	const { actions, store } = useContext(Context);
 
 	const [inputNickname, setNickname] = useState("");
@@ -80,7 +80,7 @@ export const NewCooker = () => {
 					/>
 				</div>
 				<div className="text-center pt-4 pb-4">
-					<Link to="/kitchen">
+					<Link to="/adminview">
 						<Button
 							onClick={e => {
 								actions.addCooker(
