@@ -20,5 +20,5 @@ export const ButtonTime = prop => {
 };
 
 ButtonTime.proptypes = {
-	time: PropTypes.number
+	time: PropTypes.string
 };

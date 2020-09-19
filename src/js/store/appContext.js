@@ -17,9 +17,7 @@ const injectContext = PassedComponent => {
 			})
 		);
 
-		useEffect(() => {
-			state.actions.getOrders();
-		}, []);
+		useEffect(() => {}, [state.store.orders]);
 
 		return (
 			<Context.Provider value={state}>

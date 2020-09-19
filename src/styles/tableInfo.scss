@@ -2,9 +2,11 @@
     width: 2rem;
     height: 2rem;
 }
-tr {
+.head{
     background-color: #7CC68D; 
     color: white;  
+    margin: 0;
+    padding:0;
 }
 tbody tr:nth-child(odd) {
   background-color: #ffffff;
@@ -14,4 +16,7 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
   background-color: #E5E5E5;
   color: black;
+}
+.borde{
+    border-right: black solid 2px;
 }

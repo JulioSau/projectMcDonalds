@@ -8,37 +8,41 @@ import "../../styles/global.scss";
 export const ViewKitchen = () => {
 	const { actions, store } = useContext(Context);
 	return (
-		<div className="d-flex ">
-			<div className="col-3 btn-kitchen-box">
-				<div className="head-logo">
-					<img
-						className="logo-medium"
-						src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png"
-					/>
-					<span className="text-muetd title">D-Kitchen</span>
+		<div>
+			<div className="d-flex head-kitchen">
+				<img
+					className="logo-medium"
+					src="https://dkitchenincubator.com/wp-content/uploads/2020/01/cocinero-1.png"
+				/>
+				<div className="m-auto">
+					<span className="title ">Pedidos</span>
 				</div>
-				<Link to="/order">
-					<button className="mt-5 btn-kitchen-command">Añadir pedido</button>
-				</Link>
-				<Link to="/repartidor">
-					<button className="mt-5 btn-kitchen-command">Vista repartidor</button>
-				</Link>
 				<Link to="/">
-					<button className="btn-kitchen-login">Cerrar sesion</button>
+					<span className="go-to-login">
+						<i className="fa fa-sign-out" aria-hidden="true" />
+					</span>
 				</Link>
 			</div>
-			<div className="box-orders pt-4 col-9">
+			<div className="box-orders col-11 m-auto">
 				{store.orders.map((newOrders, index) => {
 					return (
 						<OrdersKitchen
 							key={index}
-							logo={newOrders.brand}
+							id={newOrders.id}
+							room={newOrders.room}
+							logo={newOrders.logo_delivery}
 							codigo={newOrders.called_code}
-							status={newOrders.status}
+							status={newOrders.status.toUpperCase()}
 							time={newOrders.time}
+							user={newOrders.cooker_id}
 						/>
 					);
 				})}
+			</div>
+			<div className="d-flex justify-content-center">
+				<Link to="/order">
+					<button className="btn-kitchen-command">Nuevo pedido</button>
+				</Link>
 			</div>
 		</div>
 	);

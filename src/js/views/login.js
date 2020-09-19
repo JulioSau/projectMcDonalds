@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Context } from "../store/appContext";
 import { Form, Button } from "react-bootstrap";
 import "../../styles/login.scss";
 import "../../styles/global.scss";
-
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 export const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const { actions, store } = useContext(Context);
+	function passwordChange(e) {
+		setPassword(e.currentTarget.value);
+	}
+	function emailChange(e) {
+		setEmail(e.currentTarget.value);
+	}
+	function login() {
+		actions.login(email, password);
+	}
+	console.log(store.cooker.is_admin);
+	if (store.cooker.is_admin) {
+		return <Redirect to="/registre" />;
+	} else if (store.cooker.is_admin === false) {
+		return <Redirect to="/kitchen" />;
+	}
 	return (
 		<div className="login-box">
 			<div className="logo-box">
@@ -18,22 +36,17 @@ export const Login = () => {
 			<Form>
 				<Form.Group controlId="formBasicEmail">
 					<Form.Label>Email address</Form.Label>
-					<Form.Control type="email" placeholder="Enter email" />
+					<Form.Control value={email} onChange={emailChange} type="email" placeholder="Enter email" />
 					<Form.Text className="text-muted">Well never share your email with anyone else.</Form.Text>
 				</Form.Group>
 
 				<Form.Group controlId="formBasicPassword">
 					<Form.Label>Password</Form.Label>
-					<Form.Control type="password" placeholder="Password" />
+					<Form.Control value={password} onChange={passwordChange} type="password" placeholder="Password" />
 				</Form.Group>
-				<Form.Group controlId="formBasicCheckbox">
-					<Form.Check type="checkbox" label="Check me out" />
-				</Form.Group>
-				<Link to="/cooker">
-					<Button variant="secondary" type="submit">
-						Iniciar sesión
-					</Button>
-				</Link>
+				<Button onClick={login} variant="secondary">
+					Iniciar sesión
+				</Button>
 			</Form>
 		</div>
 	);

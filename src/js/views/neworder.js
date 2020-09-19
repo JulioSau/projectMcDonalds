@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { ButtonTime } from "../component/buttontime";
-import { Submit } from "../component/submit";
 import "../../styles/neworder.scss";
 import "../../styles/global.scss";
 import { Link } from "react-router-dom";
@@ -10,6 +9,7 @@ export const NewOrder = () => {
 	const { actions, store } = useContext(Context);
 
 	const [inputCode, setCodigo] = useState("");
+	const [inputSala, setSala] = useState("");
 
 	return (
 		<div className="m-auto col-10">
@@ -22,7 +22,16 @@ export const NewOrder = () => {
 
 				<form id="my-form">
 					<input onChange={e => setCodigo(e.target.value)} className="order-input  mb-3" />
-
+					<div className="d-flex justify-content-center mb-3">
+						<span className=" title-sub pb-1 mr-4">Sala:</span>
+						<input
+							type="number"
+							min={1}
+							max={16}
+							className="order-minutes text-center"
+							onChange={e => setSala(e.target.value)}
+						/>
+					</div>
 					<div className="d-flex justify-content-center mb-3">
 						<span className=" title-sub pb-2 mr-4">Tiempo de preparación</span>
 						<span className="order-minutes ">{store.orderTime}</span>
@@ -69,9 +78,9 @@ export const NewOrder = () => {
 					<Link to="/kitchen">
 						<button
 							onClick={e => {
-								actions.addOrder(inputCode, store.orderTime);
+								actions.addOrder(inputCode, store.orderTime, inputSala);
 							}}
-							className=" bg-secondary submit col-md-5 mt-5 rounded">
+							className=" bg-secondary orders-btn col-md-5 mt-5 rounded">
 							ACEPTAR
 						</button>
 					</Link>
