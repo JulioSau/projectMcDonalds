@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 
 export const NewOrder = () => {
 	const { actions, store } = useContext(Context);
-
 	const [inputCode, setCodigo] = useState("");
 	const [inputSala, setSala] = useState("");
+
+	let toEdit = store.orderToEdit;
 
 	return (
 		<div className="m-auto col-10">
@@ -21,7 +22,11 @@ export const NewOrder = () => {
 				<span className="header-order-form title-sub pb-2 pt-2">Código de pedido</span>
 
 				<form id="my-form">
-					<input onChange={e => setCodigo(e.target.value)} className="order-input  mb-3" />
+					<input
+						onChange={e => setCodigo(e.target.value)}
+						defaultValue={toEdit ? toEdit.codigo : ""}
+						className="order-input  mb-3"
+					/>
 					<div className="d-flex justify-content-center mb-3">
 						<span className=" title-sub pb-1 mr-4">Sala:</span>
 						<input
@@ -77,8 +82,16 @@ export const NewOrder = () => {
 					</div>
 					<Link to="/kitchen">
 						<button
-							onClick={e => {
-								actions.addOrder(inputCode, store.orderTime, inputSala);
+							onClick={() => {
+								toEdit
+									? actions.editOrder(
+											toEdit.id,
+											toEdit.status,
+											store.orderTime,
+											inputSala,
+											inputCode.toUpperCase()
+									  )
+									: actions.addOrder(inputCode.toUpperCase(), store.orderTime, inputSala);
 							}}
 							className=" bg-secondary orders-btn col-md-5 mt-5 rounded">
 							ACEPTAR

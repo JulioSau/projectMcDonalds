@@ -6,24 +6,26 @@ import "../../styles/global.scss";
 import { Redirect } from "react-router-dom";
 
 export const Login = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 	const { actions, store } = useContext(Context);
-	function passwordChange(e) {
-		setPassword(e.currentTarget.value);
-	}
-	function emailChange(e) {
-		setEmail(e.currentTarget.value);
-	}
-	function login() {
-		actions.login(email, password);
-	}
-	console.log(store.cooker.is_admin);
+	const [data, setData] = useState({
+		email: "",
+		password: ""
+	});
+	const inputChange = event => {
+		setData({ ...data, [event.target.name]: event.target.value });
+	};
+
+	const sendDatos = e => {
+		e.preventDefault();
+		actions.login(data.email, data.password);
+	};
+
 	if (store.cooker.is_admin) {
 		return <Redirect to="/registre" />;
 	} else if (store.cooker.is_admin === false) {
 		return <Redirect to="/kitchen" />;
 	}
+
 	return (
 		<div className="login-box">
 			<div className="logo-box">
@@ -33,20 +35,22 @@ export const Login = () => {
 				/>
 				<span className="title">D-Kitchen</span>
 			</div>
-			<Form>
+			<Form onSubmit={sendDatos}>
 				<Form.Group controlId="formBasicEmail">
 					<Form.Label>Email address</Form.Label>
-					<Form.Control value={email} onChange={emailChange} type="email" placeholder="Enter email" />
+					<Form.Control name="email" onChange={inputChange} type="email" placeholder="Enter email" />
 					<Form.Text className="text-muted">Well never share your email with anyone else.</Form.Text>
 				</Form.Group>
 
 				<Form.Group controlId="formBasicPassword">
 					<Form.Label>Password</Form.Label>
-					<Form.Control value={password} onChange={passwordChange} type="password" placeholder="Password" />
+					<Form.Control name="password" onChange={inputChange} type="password" placeholder="Password" />
 				</Form.Group>
-				<Button onClick={login} variant="secondary">
-					Iniciar sesión
-				</Button>
+				<div className="d-flex justify-content-center ">
+					<Button onSubmit={sendDatos} onClick={sendDatos} variant="secondary">
+						Iniciar sesión
+					</Button>
+				</div>
 			</Form>
 		</div>
 	);

@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { useState, useEffect } from "react";
-import { Button, Modal } from "react-bootstrap";
-import { Component } from "react-bootstrap";
+import { useState } from "react";
+import { Modal } from "react-bootstrap";
+
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+
 import "../../styles/Orderskitchen.scss";
 import "../../styles/global.scss";
+import { Link } from "react-router-dom";
 
 export const OrdersKitchen = props => {
 	const { actions, store } = useContext(Context);
@@ -36,9 +37,7 @@ export const OrdersKitchen = props => {
 		<div>
 			<button onClick={handleShow} className="order-box">
 				<div className={orderStatus}>
-					<span className="text-white">
-						{props.status} Cocinero : {props.user}
-					</span>
+					<span className="text-white">{props.status}</span>
 				</div>
 
 				<div className="d-flex justify-content-center align-items-center">
@@ -66,18 +65,23 @@ export const OrdersKitchen = props => {
 					<div>
 						<div className="">
 							<div className="d-flex justify-content-center align-items-center mb-3">
-								<h2 className="mr-4">
-									Tiempo:
-									<span>{props.time}</span>
-								</h2>
-								<button className="orders-btn-modal  text-dark">Editar</button>
+								<h2 className="mr-4">Editar orden:</h2>
+								<Link to={"/order"}>
+									<button
+										onClick={() => {
+											actions.orderToEdit(props);
+										}}
+										className="orders-btn-modal  text-dark">
+										Editar
+									</button>
+								</Link>
 							</div>
 							<h2>Cambiar Status:</h2>
 							<div className="d-flex justify-content-between">
 								<button
 									className="orders-btn-modal bg-success"
 									onClick={() => {
-										actions.editOrder(props.id, "listo");
+										actions.setTimer(props.id, "listo", props.time);
 										setShow(false);
 									}}>
 									Listo
@@ -85,7 +89,7 @@ export const OrdersKitchen = props => {
 								<button
 									className="orders-btn-modal bg-info"
 									onClick={() => {
-										actions.editOrder(props.id, "proceso");
+										actions.setTimer(props.id, "proceso", props.time);
 										setShow(false);
 									}}>
 									Proceso
@@ -93,7 +97,7 @@ export const OrdersKitchen = props => {
 								<button
 									className="orders-btn-modal bg-danger"
 									onClick={() => {
-										actions.editOrder(props.id, "cancelado");
+										actions.setTimer(props.id, "cancelado", props.time);
 										setShow(false);
 									}}>
 									Cancelado

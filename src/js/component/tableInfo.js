@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+
 import { Context } from "../store/appContext";
 import "../../styles/tableInfo.scss";
 export const TableInfo = () => {
@@ -20,6 +21,9 @@ export const TableInfo = () => {
 					</thead>
 					<tbody>
 						{store.orders.map((infoRow, index) => {
+							if (infoRow.status == "espera") {
+								infoRow.time = "00:00";
+							}
 							if (infoRow.status == "espera" || infoRow.status == "proceso")
 								return (
 									<tr key={index}>

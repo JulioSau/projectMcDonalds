@@ -6,7 +6,7 @@ import "../../styles/viewsKitchen.scss";
 import "../../styles/global.scss";
 
 export const ViewKitchen = () => {
-	const { actions, store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	return (
 		<div>
 			<div className="d-flex head-kitchen">
@@ -23,25 +23,32 @@ export const ViewKitchen = () => {
 					</span>
 				</Link>
 			</div>
-			<div className="box-orders col-11 m-auto">
-				{store.orders.map((newOrders, index) => {
+			<div className="d-flex flex-wrap col-11 m-auto justify-content-center p-3 rounded bg-dark">
+				{store.orders.map((calleds, index) => {
 					return (
 						<OrdersKitchen
 							key={index}
-							id={newOrders.id}
-							room={newOrders.room}
-							logo={newOrders.logo_delivery}
-							codigo={newOrders.called_code}
-							status={newOrders.status.toUpperCase()}
-							time={newOrders.time}
-							user={newOrders.cooker_id}
+							id={calleds.id}
+							room={calleds.room}
+							logo={calleds.logo_delivery}
+							codigo={calleds.called_code}
+							status={calleds.status.toUpperCase()}
+							time={calleds.time}
+							user={calleds.cooker_id}
+							recordTime={calleds.started_at}
 						/>
 					);
 				})}
 			</div>
 			<div className="d-flex justify-content-center">
 				<Link to="/order">
-					<button className="btn-kitchen-command">Nuevo pedido</button>
+					<button
+						onClick={() => {
+							actions.deleteEdit();
+						}}
+						className="btn-kitchen-command">
+						Nuevo pedido
+					</button>
 				</Link>
 			</div>
 		</div>

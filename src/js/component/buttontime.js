@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "../../styles/buttontime.scss";
 
 export const ButtonTime = prop => {
-	const { actions, store } = useContext(Context);
+	const { actions } = useContext(Context);
 	return (
 		<div className="button mt-2">
 			<button

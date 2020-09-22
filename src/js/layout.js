@@ -7,6 +7,7 @@ import { ViewKitchen } from "./views/viewKitchen";
 import { NewCooker } from "./views/newcooker";
 import { NewOrder } from "./views/neworder";
 import { Footer } from "./component/footer";
+
 import injectContext from "./store/appContext";
 
 //create your first component
@@ -38,6 +39,7 @@ const Layout = () => {
 						<Route exact path="/order">
 							<NewOrder />
 						</Route>
+
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

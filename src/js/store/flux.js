@@ -1,11 +1,11 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			timeWait: "00:00",
 			cooker: {},
 			token: {},
 			orderTime: 0,
 			timeTotal: 0,
-			orderChronometer: 0,
 			orders: [],
 			deliveryLogo: "",
 			orders_logo: {
@@ -35,6 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 				response = await response.json();
 				getActions().setUser(response);
+				getActions().getOrders();
 			},
 			setUser: response => {
 				setStore({ cooker: response.cooker });
@@ -43,12 +44,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getOrders: async () => {
 				let store = getStore();
 				let response = await fetch(
-					`https://3000-efbdec6d-8ee4-447e-be53-0a3a41a39445.ws-eu01.gitpod.io/calleds`
+					`https://3000-efbdec6d-8ee4-447e-be53-0a3a41a39445.ws-eu01.gitpod.io/calleds`,
+					{
+						mode: "cors",
+						redirect: "follow",
+						headers: new Headers({
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${store.token}`
+						})
+					}
 				);
 				response = await response.json();
 				setStore({
 					orders: response.sort(function(prev, next) {
-						return prev.time - next.time;
+						return prev.requested_at - next.requested_at;
 					})
 				});
 			},
@@ -110,20 +119,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 						mode: "cors",
 						redirect: "follow",
 						headers: new Headers({
-							"Content-Type": "application/json"
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${store.token}`
 						}),
 						body: JSON.stringify({
 							called_code: code.toUpperCase(),
-							time: time.toString(),
+							time: time,
 							logo_delivery: store.deliveryLogo,
 							room: workSpace,
 							cooker_id: store.cooker.id
 						})
 					}
 				);
+				getActions().deleteEdit();
 				getActions().getOrders();
 			},
-			editOrder: async (id, newStatus) => {
+			orderToEdit: orderToEdit => {
+				setStore({ orderToEdit: orderToEdit });
+			},
+			deleteEdit: () => {
+				setStore({ orderToEdit: undefined });
+			},
+			editOrder: async (id, newStatus, newTime, workSpace, code) => {
 				let store = getStore();
 				let response = await fetch(
 					"https://3000-efbdec6d-8ee4-447e-be53-0a3a41a39445.ws-eu01.gitpod.io/calleds/" + id,
@@ -132,15 +149,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 						mode: "cors",
 						redirect: "follow",
 						headers: new Headers({
-							"Content-Type": "application/json"
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${store.token}`
 						}),
 						body: JSON.stringify({
-							status: newStatus
+							called_code: code,
+							logo_delivery: store.deliveryLogo,
+							status: newStatus,
+							time: newTime,
+							room: workSpace
 						})
 					}
 				);
 
 				getActions().getOrders();
+			},
+
+			deleteOrder: async id => {
+				let store = getStore();
+				let response = await fetch(
+					"https://3000-efbdec6d-8ee4-447e-be53-0a3a41a39445.ws-eu01.gitpod.io/calleds/" + id,
+					{
+						method: "DELETE",
+						mode: "cors",
+						redirect: "follow",
+						headers: new Headers({
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${store.token}`
+						})
+					}
+				);
+				getActions().getOrders();
+			},
+			orderLogo: logo => {
+				setStore({ deliveryLogo: logo });
 			},
 			orderTime: timeOrder => {
 				let store = getStore();
@@ -156,46 +198,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 					hora = ("0" + hora).slice(-2);
 					minutes = ("0" + minutes).slice(-2);
 
-					setStore({ orderTime: hora + minutes });
+					setStore({ orderTime: hora + ":" + minutes });
 				}
 			},
-			deleteOrder: async id => {
-				let response = await fetch(
-					"https://3000-efbdec6d-8ee4-447e-be53-0a3a41a39445.ws-eu01.gitpod.io/calleds/" + id,
-					{
-						method: "DELETE",
-						mode: "cors",
-						redirect: "follow",
-						headers: new Headers({
-							"Content-Type": "application/json"
-						})
-					}
-				);
-				getActions().getOrders();
-			},
-			orderLogo: logo => {
-				setStore({ deliveryLogo: logo });
-			},
-			Chronometer: timeCooking => {
-				let store = getStore();
-				let fechaHora = new Date();
-				let horas = fechaHora.getHours();
-				let minutos = fechaHora.getMinutes();
-				let segundos = fechaHora.getSeconds();
-				/* 
-				if (horas < 10) {
-					horas = "0" + horas;
-				}
-				if (minutos < 10) {
-					minutos = "0" + minutos;
-				}
-				if (segundos < 10) {
-					segundos = "0" + segundos;
-				} */
+			setTimer: (id, newStatus, time) => {
+				let startTime = new Date();
+				let startHours = startTime.getHours();
+				let startMinutes = startTime.getMinutes();
 
-				setStore({ orderChronometer: horas + ":" + minutos + ":" + segundos });
-				setInterval(Chronometer, 1000);
-				return store.orderChronometer;
+				let userHours = time.slice(0, 2);
+				let userMinutes = time.slice(-2);
+
+				let waitHours = parseInt(startHours) + parseInt(userHours);
+
+				let waitMinutes = parseInt(startMinutes) + parseInt(userMinutes);
+				if (newStatus == "listo" || newStatus == "cancelado") {
+					waitMinutes = "00";
+					waitHours = "00";
+					startMinutes = "00";
+					startHours = "00";
+				}
+				if (waitMinutes > 59) {
+					waitHours = waitHours + 1;
+					waitMinutes = "00";
+				}
+				if (waitHours > 23) {
+					waitHours = "00";
+				}
+
+				setStore((getStore().timeWait = waitHours + ":" + ("0" + waitMinutes).slice(-2)));
+
+				getActions().editOrder(id, newStatus, getStore().timeWait);
+
+				console.log(id, newStatus, time);
+				console.log(getStore().timeWait);
+				console.log(startTime);
 			}
 		}
 	};
