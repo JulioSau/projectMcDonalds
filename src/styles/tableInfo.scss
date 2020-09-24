@@ -11,12 +11,14 @@
 tbody tr:nth-child(odd) {
   background-color: #ffffff;
   color: black;
+  font-size: 2rem;
 }
 
 tbody tr:nth-child(even) {
   background-color: #E5E5E5;
   color: black;
+  font-size: 2rem;
 }
 .borde{
-    border-right: black solid 2px;
+    border-right: black solid 5px;
 }

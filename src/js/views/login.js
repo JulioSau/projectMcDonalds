@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Form, Button } from "react-bootstrap";
 import "../../styles/login.scss";
@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom";
 
 export const Login = () => {
 	const { actions, store } = useContext(Context);
+
 	const [data, setData] = useState({
 		email: "",
 		password: ""

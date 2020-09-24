@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			timeWait: "00:00",
+			timeWait: "",
 			cooker: {},
 			token: {},
 			orderTime: 0,
@@ -55,9 +55,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				);
 				response = await response.json();
+
 				setStore({
 					orders: response.sort(function(prev, next) {
-						return prev.requested_at - next.requested_at;
+						return next.started_at - prev.started_at;
 					})
 				});
 			},
@@ -126,7 +127,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							called_code: code.toUpperCase(),
 							time: time,
 							logo_delivery: store.deliveryLogo,
-							room: workSpace,
+							room: store.cooker.id,
 							cooker_id: store.cooker.id
 						})
 					}
@@ -140,7 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteEdit: () => {
 				setStore({ orderToEdit: undefined });
 			},
-			editOrder: async (id, newStatus, newTime, workSpace, code) => {
+			editOrder: async (id, newStatus, newTime, code, logo) => {
 				let store = getStore();
 				let response = await fetch(
 					"https://3000-efbdec6d-8ee4-447e-be53-0a3a41a39445.ws-eu01.gitpod.io/calleds/" + id,
@@ -154,10 +155,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}),
 						body: JSON.stringify({
 							called_code: code,
-							logo_delivery: store.deliveryLogo,
+							logo_delivery: logo,
 							status: newStatus,
-							time: newTime,
-							room: workSpace
+							time: newTime
 						})
 					}
 				);
@@ -187,7 +187,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			orderTime: timeOrder => {
 				let store = getStore();
 
-				if (timeOrder == "Reset") {
+				//let startTime = new Date();
+				//let startHours = startTime.getHours();
+				//let startMinutes = startTime.getMinutes();
+
+				if (timeOrder == "0 ") {
 					setStore({ timeTotal: 0 });
 					setStore({ orderTime: 0 });
 				} else {
@@ -195,10 +199,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					let hora = Math.floor(store.timeTotal / 60);
 					let minutes = store.timeTotal % 60;
+
+					/* let waitHours = parseInt(startHours) + parseInt(hora);
+					let waitMinutes = parseInt(startMinutes) + parseInt(minutes);
+					if (waitMinutes > 59) {
+						waitHours = waitHours + 1;
+						waitMinutes = "00";
+					}
+					if (waitHours > 23) {
+						waitHours = "00";
+					} */
+
 					hora = ("0" + hora).slice(-2);
 					minutes = ("0" + minutes).slice(-2);
 
 					setStore({ orderTime: hora + ":" + minutes });
+					console.log("ordertime:" + store.orderTime);
+
+					//setStore({ orderTime: waitHours + ":" + waitMinutes });
 				}
 			},
 			setTimer: (id, newStatus, time) => {
@@ -210,17 +228,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let userMinutes = time.slice(-2);
 
 				let waitHours = parseInt(startHours) + parseInt(userHours);
-
 				let waitMinutes = parseInt(startMinutes) + parseInt(userMinutes);
+
 				if (newStatus == "listo" || newStatus == "cancelado") {
 					waitMinutes = "00";
 					waitHours = "00";
 					startMinutes = "00";
 					startHours = "00";
 				}
-				if (waitMinutes > 59) {
+				if (waitMinutes > 60) {
 					waitHours = waitHours + 1;
-					waitMinutes = "00";
+					waitMinutes = 60 - waitMinutes;
 				}
 				if (waitHours > 23) {
 					waitHours = "00";
@@ -230,9 +248,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				getActions().editOrder(id, newStatus, getStore().timeWait);
 
-				console.log(id, newStatus, time);
+				/* 		console.log(id, newStatus, time);
 				console.log(getStore().timeWait);
-				console.log(startTime);
+				console.log(startTime); */
+			},
+			/* setTimer: (id, newStatus) => {
+				getActions().editOrder(id, newStatus);
+			} */ logout: () => {
+				setStore({ token: "" });
+				setStore({ cooker: {} });
 			}
 		}
 	};
